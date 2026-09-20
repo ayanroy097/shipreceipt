@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ShipReceipt — browser-local release checksums</title>
+  <meta name="description" content="SHA-256 checksums, manifest, and BUYER_UPDATE for digital sellers. Files never leave your browser." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <h1>ShipReceipt</h1>
+      <p class="lede">Build a release pack for digital buyers: <code>checksums.sha256</code>, <code>manifest.json</code>, and <code>BUYER_UPDATE.md</code>. Hashing and export run entirely in your browser — nothing is uploaded.</p>
+      <p class="badge" id="privacyBadge">Files never leave your browser</p>
+    </header>
+
+    <section class="card" aria-labelledby="drop-heading">
+      <h2 id="drop-heading">1. Files</h2>
+      <div id="dropzone" class="dropzone" tabindex="0" role="button" aria-label="Drop files or folder here">
+        <p><strong>Drop files or a folder</strong> here, or choose below.</p>
+        <p class="hint">Multi-file and folder (webkitdirectory) supported.</p>
+        <div class="row">
+          <label class="btn">Choose files<input id="fileInput" type="file" multiple hidden /></label>
+          <label class="btn secondary">Choose folder<input id="dirInput" type="file" webkitdirectory directory multiple hidden /></label>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table id="hashTable" hidden>
+          <thead>
+            <tr><th>Path</th><th>Bytes</th><th>SHA-256</th></tr>
+          </thead>
+          <tbody id="hashBody"></tbody>
+        </table>
+      </div>
+      <p id="status" class="status" aria-live="polite"></p>
+    </section>
+
+    <section class="card" aria-labelledby="meta-heading">
+      <h2 id="meta-heading">2. Release metadata</h2>
+      <div class="grid">
+        <label>Product name<input id="productName" type="text" placeholder="My digital product" autocomplete="off" /></label>
+        <label>Version<input id="version" type="text" placeholder="1.0.0" autocomplete="off" /></label>
+        <label>Date<input id="releaseDate" type="date" /></label>
+        <label>Support URL<input id="supportUrl" type="url" placeholder="https://example.com/support" autocomplete="off" /></label>
+      </div>
+      <label class="block">What changed (one bullet per line)
+        <textarea id="whatChanged" rows="4" placeholder="Fixed export edge case&#10;Documented checksum verify steps"></textarea>
+      </label>
+    </section>
+
+    <section class="card" aria-labelledby="export-heading">
+      <h2 id="export-heading">3. Download pack</h2>
+      <p class="hint">Exports use only data already in memory. No network calls during hash or download.</p>
+      <div class="row">
+        <button id="btnChecksums" class="btn" type="button" disabled>checksums.sha256</button>
+        <button id="btnManifest" class="btn" type="button" disabled>manifest.json</button>
+        <button id="btnBuyer" class="btn" type="button" disabled>BUYER_UPDATE.md</button>
+        <button id="btnChangelog" class="btn secondary" type="button" disabled>CHANGELOG.md</button>
+        <button id="btnAll" class="btn primary" type="button" disabled>Download all</button>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <p><a href="https://github.com/ayanroy097/shipreceipt">Source</a> · <a href="demo/">Demo fixtures</a> · Free · No account · INR 0</p>
+    </footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
